@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Calendar</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background: #0a0e17;
+    display: flex; justify-content: center; align-items: center;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: #fff; padding: 20px;
+  }
+  .calendar-container {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    padding: 40px 50px;
+    text-align: center;
+  }
+  .calendar-header {
+    font-size: 1.8rem; font-weight: 600; margin-bottom: 15px;
+  }
+  .calendar-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+  .day, .date {
+    text-align: center; padding: 10px 0; border-radius: 8px;
+  }
+  .day {
+    font-size: 0.9rem; color: rgba(255,255,255,0.7); text-transform: uppercase;
+  }
+  .date {
+    font-size: 1.1rem; background: rgba(255,255,255,0.05);
+  }
+  .today {
+    background: linear-gradient(45deg, #00ff88, #00ffee); color: #0a0e17; font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<div class="calendar-container">
+  <div class="calendar-header" id="monthYear"></div>
+  <div class="calendar-grid" id="calendar"></div>
+</div>
+
+<script>
+const monthYearEl=document.getElementById("monthYear");
+const calendarEl=document.getElementById("calendar");
+function generateCalendar(){
+  const now=new Date(); const month=now.getMonth(), year=now.getFullYear();
+  monthYearEl.textContent=now.toLocaleString('default',{month:'long'})+" "+year;
+  calendarEl.innerHTML='';
+  const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  days.forEach(d=>{const dayEl=document.createElement("div"); dayEl.className="day"; dayEl.textContent=d; calendarEl.appendChild(dayEl);});
+  const firstDay=new Date(year,month,1).getDay(); const daysInMonth=new Date(year,month+1,0).getDate();
+  for(let i=0;i<firstDay;i++){const e=document.createElement("div"); e.className="date"; calendarEl.appendChild(e);}
+  for(let d=1;d<=daysInMonth;d++){
+    const dateEl=document.createElement("div"); dateEl.className="date"; dateEl.textContent=d;
+    if(d===now.getDate()){dateEl.classList.add("today");}
+    calendarEl.appendChild(dateEl);
+  }
+}
+generateCalendar();
+</script>
+</body>
+</html>

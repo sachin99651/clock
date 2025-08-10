@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard Home</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background: #0a0e17;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: #fff; padding: 20px;
+  }
+  h1 {
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    color: rgba(255,255,255,0.9);
+  }
+  .button-grid {
+    display: flex; flex-wrap: wrap; gap: 30px;
+    justify-content: center;
+  }
+  .nav-button {
+    padding: 30px 50px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.2s, background 0.3s;
+  }
+  .nav-button:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.08);
+  }
+</style>
+</head>
+<body>
+<h1>Welcome to My Dashboard</h1>
+<div class="button-grid">
+  <a href="clock.html" class="nav-button">Clock</a>
+  <a href="calendar.html" class="nav-button">Calendar</a>
+  <a href="timer.html" class="nav-button">Timer</a>
+</div>
+</body>
+</html>
